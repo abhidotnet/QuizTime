@@ -5,7 +5,8 @@ namespace QuizTime.Models
 {
     public class QuizAnswerRepository : IQuizAnswerRepository
     {
-        private List<QuizAnswer> quizAnswers = new List<QuizAnswer>();
+        private readonly List<QuizAnswer> quizAnswers = new List<QuizAnswer>();
+
         private PlayerScore Score { get; set; }
 
         private static readonly Lazy<QuizAnswerRepository> quizAnswerRepository = new Lazy<QuizAnswerRepository>(() => new QuizAnswerRepository());

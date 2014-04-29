@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace QuizTime.Models
 {
     public class QuestionRepository : IQuestionRepository
     {
-        private List<Question> questions = new List<Question>();
-        private int _nextId = 1;
+        private readonly List<Question> questions = new List<Question>();
+        private int nextId = 1;
 
         private static readonly Lazy<QuestionRepository> questionRepository = new Lazy<QuestionRepository>(() => new QuestionRepository());
         public static QuestionRepository Instance { get { return questionRepository.Value; } }
@@ -39,7 +38,7 @@ namespace QuizTime.Models
             {
                 throw new ArgumentNullException("item");
             }
-            item.QuestionId = _nextId++;
+            item.QuestionId = nextId++;
             questions.Add(item);
             return item;
         }
